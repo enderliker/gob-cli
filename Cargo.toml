@@ -1,0 +1,15 @@
+[package]
+name = "babelia"
+version = "0.1.0"
+edition = "2024"
+description = "Find where an image lives in the Gallery of Babel (babelia.libraryofbabel.info)"
+license = "CC-BY-NC-SA-4.0"
+
+[dependencies]
+rug = { version = "1", default-features = false, features = ["integer", "std"] }
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "gif", "webp", "bmp", "tiff"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1

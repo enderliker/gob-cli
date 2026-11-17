@@ -1,0 +1,14 @@
+The algorithm, including the multi-precision constants in `consts/`, is the work
+of Jonathan Basile and was published at
+
+    https://github.com/librarianofbabel/libraryofbabel.info-algo
+
+under CC BY-SA-NC. This project is a Rust port of that algorithm and is
+distributed under the same terms: Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International.
+
+    https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+You are free to share and adapt the material, provided you give appropriate
+credit, do not use it for commercial purposes, and license your contributions
+under the same terms. No warranty of any kind is given.
