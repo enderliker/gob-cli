@@ -1,10 +1,11 @@
 //! Find where an image lives in the Gallery of Babel.
 //!
 //! ```text
-//! babelia encode photo.jpg          # print the image's location
-//! babelia decode 1234... out.png    # render a location back to an image
+//! gob-cli encode photo.jpg          # print the image's location
+//! gob-cli decode 1234... out.png    # render a location back to an image
 //! ```
 
+/// The permutation behind babelia.libraryofbabel.info.
 mod babelia;
 mod consts;
 
@@ -13,12 +14,12 @@ use rug::Integer;
 use std::process::ExitCode;
 
 const USAGE: &str = "\
-babelia - locate images in the Gallery of Babel (babelia.libraryofbabel.info)
+gob-cli - locate images in the Gallery of Babel (babelia.libraryofbabel.info)
 
 USAGE:
-    babelia encode <image> [options]     print the image's location in the gallery
-    babelia decode <location> <output>   render a location back into an image
-    babelia palette                      print the 4096-colour palette (hex, one per line)
+    gob-cli encode <image> [options]     print the image's location in the gallery
+    gob-cli decode <location> <output>   render a location back into an image
+    gob-cli palette                      print the 4096-colour palette (hex, one per line)
 
 ENCODE OPTIONS:
     --fill bars|stretch     keep proportions with bars (default) or stretch to 640x416

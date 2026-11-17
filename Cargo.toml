@@ -1,8 +1,8 @@
 [package]
-name = "babelia"
+name = "gob-cli"
 version = "0.1.0"
 edition = "2024"
-description = "Find where an image lives in the Gallery of Babel (babelia.libraryofbabel.info)"
+description = "Give any image its address in the Gallery of Babel, and render an address back into an image"
 license = "CC-BY-NC-SA-4.0"
 
 [dependencies]

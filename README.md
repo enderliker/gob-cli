@@ -1,4 +1,4 @@
-# babelia
+# gob-cli
 
 Given an image, find its address in the **Gallery of Babel**
 ([babelia.libraryofbabel.info](https://babelia.libraryofbabel.info)) — the gallery
@@ -6,7 +6,7 @@ that holds *every* 640×416 image drawn from a palette of 4096 colours. It also
 works the other way round: from an address, it rebuilds the image.
 
 ```console
-$ babelia encode photo.jpg > address.txt
+$ gob-cli encode photo.jpg > address.txt
 $ head -c 60 address.txt; echo
 1600016671984343619619267624976877615320...
 ```
@@ -18,17 +18,17 @@ gallery's search box and see exactly the same image, today and forever.
 
 ```bash
 # 1. an image's address (the number goes to stdout)
-babelia encode photo.jpg
+gob-cli encode photo.jpg
 
 # with options
-babelia encode photo.jpg --fill bars --border black --preview prepared.png
+gob-cli encode photo.jpg --fill bars --border black --preview prepared.png
 
 # 2. render an address back into an image
-babelia decode --file address.txt output.png
-cat address.txt | babelia decode --file - output.png
+gob-cli decode --file address.txt output.png
+cat address.txt | gob-cli decode --file - output.png
 
 # 3. the 4096-colour palette, one hex colour per line
-babelia palette
+gob-cli palette
 ```
 
 `decode` accepts the address as an argument, but a million-digit number is far
@@ -65,7 +65,7 @@ address --[ (a·x + c) mod m ]--> x --[ xor-shifts ]--> 266,240 colours
 - Pixels are split into 8 quadrants of 160×208, each held in a 399,361-bit slot;
   pixel `i` occupies bits `12·i .. 12·i+11`, least significant first.
 
-`babelia` implements both directions with `rug` (GMP), so **every image has an
+`gob-cli` implements both directions with `rug` (GMP), so **every image has an
 address and every address has an image**. A full round trip takes a fraction of
 a second.
 
@@ -91,7 +91,7 @@ to be shrunk. Checked against the site's own CGI:
 
 The difference in the last case comes from ImageMagick's internal resampling,
 which is not reproducible bit for bit: a few pixels land on either side of a
-palette threshold. The address `babelia` prints is still valid and reproduces
+palette threshold. The address `gob-cli` prints is still valid and reproduces
 exactly what `--preview` shows.
 
 ## Things worth knowing
@@ -101,12 +101,12 @@ exactly what `--preview` shows.
 - The site stores each quadrant in a 399,361-bit slot but only fills 399,360 of
   those bits with pixels. So the permutation is not onto: an image has a single
   address, but that address may not be the one it originally came from. The site
-  behaves the same way, and `babelia` reproduces that behaviour exactly.
+  behaves the same way, and `gob-cli` reproduces that behaviour exactly.
 
 ## Building
 
 ```bash
-cargo build --release      # binary at target/release/babelia
+cargo build --release      # binary at target/release/gob-cli
 cargo test --release
 ```
 
